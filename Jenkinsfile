@@ -10,17 +10,17 @@ pipeline {
         stage('Build') {
             steps {
                 bat 'java -version'
-                bat './online-shop-backend/gradle build '
+                bat '\online-shop-backend\gradle build '
             }
         }
        
 		 stage('Test') {
             steps {
-                bat './online-shop-backend/gradle test'
+                bat '\online-shop-backend\gradle test'
             }
             post {
                 always {
-                    junit 'target/surefire-reports/*.xml'
+                    junit 'target\surefire-reports\*.xml'
                 }
             }
         }
