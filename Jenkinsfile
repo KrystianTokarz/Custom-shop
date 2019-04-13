@@ -15,27 +15,8 @@ pipeline {
             }
         }
        
-		 stage('Test') {
-            steps {
-				bat 'cd online-shop-backend'
-                bat 'gradle test'
-            }
-            post {
-                always {
-                    junit 'target\surefire-reports\*.xml'
-                }
-            }
-        }
-		 stage('Deploy') {
-            steps {
-                echo "Deploy ${params.Version}!"
-            }
-        }
+		
 	
     }
-      post {
-            always {
-                junit 'build/reports/**/*.xml'
-            }
-        }
+  
 }
