@@ -10,8 +10,23 @@ pipeline {
         stage('Build') {
             steps {
                 bat 'java -version'
-                bat 'gradle build -b /online-shop-backend'
+                bat 'gradle build -b /online-shop-backend/build.gradle'
 			
+            }
+        }
+		stage('Test') {
+            steps {
+               bat 'gradle test -b /online-shop-backend/build.gradle'
+            }
+            post {
+                always {
+                    junit 'target\surefire-reports\*.xml'
+                }
+            }
+        }
+		 stage('Deploy') {
+            steps {
+                echo "Deploy ${params.Greeting}!"
             }
         }
        
