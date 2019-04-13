@@ -18,11 +18,7 @@ pipeline {
             steps {
                bat 'gradle test -b /online-shop-backend/build.gradle'
             }
-            post {
-                always {
-                    junit 'target\surefire-reports\*.xml'
-                }
-            }
+          
         }
 		 stage('Deploy') {
             steps {
