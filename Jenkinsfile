@@ -22,7 +22,7 @@ pipeline {
         }
 		 stage('Deploy') {
             steps {
-                echo "Deploy ${params.Greeting}!"
+                echo "Deploy ${params.Version}!"
             }
         }
        
