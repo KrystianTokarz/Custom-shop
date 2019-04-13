@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 bat 'java -version'
-                bat 'cd online-shop-backend'
+                dir('online-shop-backend')
 				bat 'gradle build'
             }
         }
