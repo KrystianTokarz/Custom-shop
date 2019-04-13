@@ -2,7 +2,7 @@ pipeline {
     agent any
 	
 	 parameters {
-            string(name: 'Greeting', defaultValue: 'Jenkins', description: 'Jenkins')
+            string(name: 'Version', defaultValue: '1.0.0', description: 'Version')
             
         }
 		
@@ -10,13 +10,15 @@ pipeline {
         stage('Build') {
             steps {
                 bat 'java -version'
-                bat '\online-shop-backend\gradle build '
+                bat 'cd online-shop-backend'
+				bat 'gradle build'
             }
         }
        
 		 stage('Test') {
             steps {
-                bat '\online-shop-backend\gradle test'
+				bat 'cd online-shop-backend'
+                bat 'gradle test'
             }
             post {
                 always {
@@ -26,7 +28,7 @@ pipeline {
         }
 		 stage('Deploy') {
             steps {
-                echo "Deploy ${params.Greeting}!"
+                echo "Deploy ${params.Version}!"
             }
         }
 	
